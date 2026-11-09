@@ -1,0 +1,656 @@
+/* ============================================================
+   SHIKIMORI · SOFT MINIMALIST
+   Кастомная адаптивная (светлая/тёмная) тема на весь сайт.
+   Настроение: мягкий минимализм — воздух, скругления, мягкие тени.
+
+   Установка:
+   • Быстро: вставь этот код целиком в  Настройки → «Внешний вид сайта».
+   • Лучше (автообновление + мобилка): залей файл на GitHub и поставь
+     @import url("https://raw.githubusercontent.com/ТВОЙ_ЛОГИН/REPO/main/shikimori-soft-minimalist.css");
+
+   Как поменять цвет: поменяй --accent / --accent-2 (см. :root ниже).
+   Пресеты акцентов — в конце файла.
+   ============================================================ */
+
+/* Шрифт Inter (современный). Если не загрузится — встанет системный. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Отменяет дефолтную обёртку Шикимори в @media (min-width: 1024px),
+   чтобы тема работала и на мобильных. Это обязательная строчка. */
+@media {}
+
+
+/* ============================ СВЕТЛАЯ (базовая) ============================ */
+:root {
+  --bg:          #f5f6f8;
+  --bg-grad-1:   #eef1f6;
+  --surface:     #ffffff;
+  --surface-2:   #f2f4f8;
+  --surface-3:   #e9ecf1;
+  --text:        #1b1d24;
+  --text-2:      #565b68;
+  --text-3:      #8a909e;
+  --border:      #e7e9ee;
+  --border-2:    #d8dce4;
+  --accent:      #6b73e6;
+  --accent-2:    #8b5cf6;
+  --accent-soft: rgba(107,115,230,.10);
+  --accent-hover:#5a61d6;
+  --link:        #6b73e6;
+  --link-hover:  #8b5cf6;
+  --green:       #22a06b;
+  --radius:      16px;
+  --radius-sm:   12px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(20,24,40,.05);
+  --shadow:    0 2px 6px rgba(20,24,40,.06), 0 10px 30px rgba(20,24,40,.06);
+  --shadow-lg: 0 8px 24px rgba(20,24,40,.10), 0 24px 48px rgba(20,24,40,.10);
+  --focus: 0 0 0 3px rgba(107,115,230,.25);
+  color-scheme: light;
+}
+
+/* ============================ ТЁМНАЯ ============================ */
+/* Реагирует на тёмный режим ОС/браузера: */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #0d0e13;
+    --bg-grad-1:   #12141b;
+    --surface:     #171922;
+    --surface-2:   #1e212b;
+    --surface-3:   #262a36;
+    --text:        #e7e9f0;
+    --text-2:      #a6abb9;
+    --text-3:      #767c8b;
+    --border:      #2a2e3a;
+    --border-2:    #363b49;
+    --accent:      #8b93f7;
+    --accent-2:    #a78bfa;
+    --accent-soft: rgba(139,147,247,.14);
+    --accent-hover:#a3aaff;
+    --link:        #9aa3f8;
+    --link-hover:  #c0b8ff;
+    --green:       #34d17f;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+    --shadow:    0 2px 8px rgba(0,0,0,.45), 0 12px 34px rgba(0,0,0,.45);
+    --shadow-lg: 0 10px 28px rgba(0,0,0,.55), 0 28px 56px rgba(0,0,0,.55);
+    --focus: 0 0 0 3px rgba(139,147,247,.30);
+    color-scheme: dark;
+  }
+}
+/* ...и реагирует на нативную тёмную тему самого Шикимори (data-color-mode) */
+html[data-color-mode="dark"] {
+  --bg:          #0d0e13;
+  --bg-grad-1:   #12141b;
+  --surface:     #171922;
+  --surface-2:   #1e212b;
+  --surface-3:   #262a36;
+  --text:        #e7e9f0;
+  --text-2:      #a6abb9;
+  --text-3:      #767c8b;
+  --border:      #2a2e3a;
+  --border-2:    #363b49;
+  --accent:      #8b93f7;
+  --accent-2:    #a78bfa;
+  --accent-soft: rgba(139,147,247,.14);
+  --accent-hover:#a3aaff;
+  --link:        #9aa3f8;
+  --link-hover:  #c0b8ff;
+  --green:       #34d17f;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+  --shadow:    0 2px 8px rgba(0,0,0,.45), 0 12px 34px rgba(0,0,0,.45);
+  --shadow-lg: 0 10px 28px rgba(0,0,0,.55), 0 28px 56px rgba(0,0,0,.55);
+  --focus: 0 0 0 3px rgba(139,147,247,.30);
+  color-scheme: dark;
+}
+
+
+/* ============================ БАЗА ============================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 100% -10%, var(--accent-soft), transparent 60%),
+    var(--bg) !important;
+  background-attachment: fixed;
+  color: var(--text) !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: .01em;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: var(--radius-sm);
+}
+
+/* мягкие скроллбары */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-2);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); background-clip: padding-box; }
+
+
+/* ============================ ССЫЛКИ ============================ */
+a {
+  color: var(--link) !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+  transition: color .18s ease, text-shadow .18s ease;
+}
+a:hover { color: var(--link-hover) !important; }
+a:active { color: var(--accent-2) !important; }
+
+/* ключевые ссылки-названия (иначе их цвет задаёт !important Шикимори) */
+.b-link,
+.b-link_button,
+.b-mention,
+.b-comment > .inner header .name-date a.name,
+.b-topic > .inner header .name-date a.name,
+.b-person .name,
+.b-club .name,
+.b-catalog_entry .cover .title,
+.b-breadcrumbs a,
+.b-breadcrumbs > span,
+header.head h1 a, header.head h2 a,
+.p-topics .l-menu .sticky-topics .topic .title,
+.p-topics .l-menu .sticky-topics .topic .title:after {
+  color: var(--link) !important;
+  border-bottom: none !important;
+}
+.b-link:hover, .b-link_button:hover, .b-mention:hover,
+.b-comment > .inner header .name-date a.name:hover,
+.b-topic > .inner header .name-date a.name:hover,
+.b-person .name:hover, .b-catalog_entry .cover .title:hover,
+.p-topics .l-menu .sticky-topics .topic .title:hover {
+  color: var(--link-hover) !important;
+}
+
+
+/* ============================ ГЛАВНЫЙ КОНТЕЙНЕР ============================ */
+.l-page {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+  margin-top: 14px !important;
+  padding: 22px !important;
+}
+
+
+/* ============================ ВЕРХНЕЕ МЕНЮ ============================ */
+.l-top_menu-v2 {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--surface) !important;
+  background: color-mix(in srgb, var(--surface) 82%, transparent) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+.l-top_menu-v2 .menu-dropdown > span,
+.l-top_menu-v2 .menu-icon {
+  color: var(--text-2) !important;
+  transition: color .18s ease, background .18s ease;
+}
+.l-top_menu-v2 .menu-dropdown > span:hover,
+.l-top_menu-v2 .menu-icon:hover {
+  color: var(--accent) !important;
+  background: var(--accent-soft);
+}
+.l-top_menu-v2 .submenu {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 6px;
+  margin-top: 6px;
+}
+.l-top_menu-v2 .submenu > a {
+  color: var(--text-2) !important;
+  border-radius: 8px;
+  transition: background .18s ease, color .18s ease;
+}
+.l-top_menu-v2 .submenu > a:hover {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+}
+.l-top_menu-v2 .menu-icon.contest:after,
+.l-top_menu-v2 .menu-icon.mail:after,
+.l-top_menu-v2 .menu-dropdown > span[data-unread_count]::after {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+/* поле поиска в меню */
+.l-top_menu-v2 .global-search input {
+  background: var(--surface-2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-pill) !important;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.l-top_menu-v2 .global-search input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: var(--focus) !important;
+}
+.l-top_menu-v2 .global-search .search-results {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+
+/* ============================ ЗАГОЛОВКИ РАЗДЕЛОВ ============================ */
+.headline, .midheadline, .subheadline {
+  background: var(--surface-2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.headline > a, .midheadline > a, .subheadline > a {
+  color: var(--text) !important;
+  border-bottom: none !important;
+}
+.headline > a:hover, .midheadline > a:hover, .subheadline > a:hover {
+  color: var(--accent) !important;
+}
+.headline > a::before, .midheadline > a::before, .subheadline > a::before {
+  color: var(--accent) !important;
+}
+.midheadline.magenta, .midheadline.red, .midheadline.green,
+.midheadline.yellow, .midheadline.blue, .midheadline.orange, .midheadline.purple {
+  border-radius: var(--radius-sm) !important;
+}
+
+
+/* ============================ КАРТОЧКИ (ТОПИКИ / ОТЗЫВЫ / КОММЕНТЫ) ============================ */
+.b-topic,
+.b-comment > .inner,
+.b-message > .inner {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+.b-topic:hover, .b-comment > .inner:hover, .b-message > .inner:hover {
+  box-shadow: var(--shadow) !important;
+  border-color: var(--border-2) !important;
+  transform: translateY(-2px);
+}
+.b-topic > .inner header,
+.b-comment > .inner header {
+  border-bottom: 1px solid var(--border) !important;
+  margin-bottom: 10px;
+}
+.b-comment {
+  border-top: none !important;
+  margin-bottom: 12px !important;
+}
+
+
+/* ============================ КАРТОЧКИ АНИМЕ / МАНГИ ============================ */
+.b-catalog_entry {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm) !important;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.b-catalog_entry:hover {
+  box-shadow: var(--shadow) !important;
+  transform: translateY(-3px);
+}
+.b-catalog_entry .cover {
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden;
+}
+.b-catalog_entry .cover img {
+  transition: transform .35s ease;
+}
+.b-catalog_entry:hover .cover img {
+  transform: scale(1.06);
+}
+.b-catalog_entry .cover .title {
+  color: var(--text) !important;
+}
+
+
+/* ============================ КНОПКИ ============================ */
+.b-button,
+.b-form input[type=submit],
+.b-poll .poll-actions .vote,
+.b-poll .poll-actions .abstain {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-pill) !important;
+  box-shadow: 0 4px 14px var(--accent-soft) !important;
+  font-weight: 600;
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+}
+.b-button:hover,
+.b-form input[type=submit]:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 8px 20px var(--accent-soft) !important;
+}
+.b-button:active { transform: translateY(0); }
+
+.b-link_button {
+  background: var(--surface-2) !important;
+  color: var(--text-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.b-link_button:hover {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border-color: transparent !important;
+}
+.b-link_button.dark {
+  background: var(--surface-3) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+
+/* ============================ ПОЛЯ / ФОРМЫ ============================ */
+.b-input input, .b-input textarea,
+.b-shiki_editor .body .editor textarea,
+.b-shiki_editor .body .preview,
+.b-collection_search .field input,
+.b-bb_codes-examples .example .textarea,
+.b-shiki_editor .links .link-value,
+.b-shiki_editor .images .link-value,
+.b-shiki_editor .quotes .link-value,
+.b-shiki_editor .upload .link-value,
+select {
+  background: var(--surface-2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border-2) !important;
+  border-radius: var(--radius-sm) !important;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.b-input input:focus, .b-input textarea:focus,
+.b-shiki_editor .body .editor textarea:focus,
+.b-collection_search .field input:focus,
+.b-shiki_editor .links .link-value:focus,
+.b-shiki_editor .images .link-value:focus,
+.b-shiki_editor .quotes .link-value:focus,
+.b-shiki_editor .upload .link-value:focus,
+select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: var(--focus) !important;
+  background: var(--surface) !important;
+}
+option { background: var(--surface) !important; color: var(--text) !important; }
+
+/* чекбоксы */
+input[type=checkbox], .b-input input[type=checkbox] {
+  width: 1.15rem; height: 1.15rem;
+  border: 1px solid var(--border-2) !important;
+  border-radius: 6px !important;
+  background: var(--surface-2) !important;
+  transition: .2s cubic-bezier(.4,0,.2,1);
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+}
+input[type=checkbox]:checked {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none'%3E%3Cpath d='M15 7l-6 6-4-4' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px;
+}
+
+
+/* ============================ ТЕГИ / НАДЗНАКИ ============================ */
+.b-tag, .b-tag[href] {
+  background: var(--surface-2) !important;
+  color: var(--text-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 1px 9px !important;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.b-tag:hover, .b-tag[href]:hover, .b-tag[href].active {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border-color: transparent !important;
+}
+.b-anime_status_tag { border-radius: var(--radius-pill) !important; }
+.b-anime_status_tag.studio:hover {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+}
+
+/* статус-строки и «в коллекции» */
+.b-status-line .section {
+  background: var(--surface-2) !important;
+  color: var(--text-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 1px 10px !important;
+}
+.b-topic .footer-vote {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-2) !important;
+  border-radius: var(--radius-pill) !important;
+}
+
+
+/* ============================ АВАТАРКИ ============================ */
+.b-user.avatar img,
+.p-profiles .profile-head .c-brief .avatar img,
+.b-user.named_avatar img,
+.b-comment > .inner header img,
+.b-club .logo,
+.l-top_menu-v2 .menu-dropdown.profile > span img {
+  border-radius: 50% !important;
+  border: 2px solid var(--border);
+  transition: border-color .18s ease;
+}
+.b-user.avatar:hover img, .p-profiles .profile-head .c-brief .avatar:hover img {
+  border-color: var(--accent);
+}
+
+
+/* ============================ РАЗНОЕ ============================ */
+/* постеры */
+.b-catalog_entry .cover .image-decor img,
+.p-profiles .profile-head .c-history .entry img,
+.b-db_entry > .c-image img,
+.b-topic > .inner header img {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* звёзды рейтинга */
+.b-rate .stars { color: var(--accent) !important; }
+.b-rate .stars.background { color: var(--border-2) !important; }
+.b-rate .stars.hover { color: var(--accent-2) !important; transition: color .15s ease; }
+
+/* цитаты */
+.b-quote, .b-quote .b-quote {
+  background: var(--surface-2) !important;
+  border-left: 3px solid var(--accent) !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+}
+.b-quote .quoteable .b-user16 span { font-weight: 600; }
+
+/* спойлеры */
+.b-spoiler .content .inner, .b-spoiler .content .inner-prgrph {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+}
+.b-spoiler .content .before, .b-spoiler .content .after,
+.b-spoiler label { color: var(--text-3) !important; }
+
+/* тултипы */
+.tooltip-inner {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+/* достижения */
+.b-badge img, .b-badge .no-image,
+.b-achievement .c-image .inner a img {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* темы дня на форуме */
+.b-hot_topics-v2 {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* плавающая кнопка «обсуждение» */
+.b-comments-notifier {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-pill) !important;
+  box-shadow: 0 8px 22px var(--accent-soft) !important;
+  transition: transform .16s ease, filter .16s ease;
+}
+.b-comments-notifier:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+/* пагинация */
+.p-animes_collection-index .pagination,
+.p-mangas_collection-index .pagination,
+.p-recommendations-index .pagination,
+.p-userlist_comparer-show .pagination {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--text-2) !important;
+}
+.pagination .no-hover .link-current:not(.active) {
+  background: var(--surface-3) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* графики/статы */
+.c-lists-info .b-stats_bar .bar {
+  height: 9px;
+  border-radius: 6px;
+}
+.p-profiles .stat_name .size {
+  background: var(--surface-2) !important;
+  color: var(--text-2) !important;
+  border-radius: var(--radius-pill) !important;
+}
+
+/* «развернуть» и языковой переключатель */
+.b-lang_trigger, .b-height_shortener .expand span,
+.b-edit_styles .edit_style .style_css .editor-expand,
+.b-edit_styles .new_style .style_css .editor-expand {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-pill) !important;
+  color: var(--text-2) !important;
+}
+
+
+/* ============================ ГЛАВНАЯ / ДАШБОРД ============================ */
+.p-dashboards .c-my_list,
+.p-dashboards .user_list {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+}
+.p-dashboards .user_list .list-type > .title,
+.p-dashboards .user_list .history > .title {
+  color: var(--text) !important;
+}
+.p-dashboards-show .c-news_topics .b-topic {
+  border-top: 1px solid var(--border) !important;
+}
+
+
+/* ============================ ПРОФИЛЬ ============================ */
+.p-profiles .profile-head {
+  background:
+    linear-gradient(135deg, var(--accent-soft), transparent 55%),
+    var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+.p-profiles .profile-content .block,
+.p-profiles .about {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+
+/* ============================ МОБИЛЬНАЯ ВЕРСИЯ ============================ */
+@media (max-width: 767px) {
+  .l-page {
+    margin-top: 8px !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 14px !important;
+  }
+  .b-topic, .b-comment > .inner, .b-message > .inner,
+  .b-catalog_entry {
+    border-radius: var(--radius-sm) !important;
+  }
+  .headline, .midheadline, .subheadline {
+    text-align: left !important;
+    border-radius: var(--radius-sm) !important;
+  }
+  .b-button { border-radius: var(--radius-sm) !important; }
+  .l-top_menu-v2 .submenu {
+    border-radius: var(--radius-sm) !important;
+  }
+  .b-profiles .profile-head .c-brief .avatar img,
+  .b-user.avatar img { border-width: 1px; }
+  body { letter-spacing: 0; }
+}
+
+
+/* ============================================================
+   ПРЕСЕТЫ АКЦЕНТА (раскомментируй нужную пару в :root и в тёмном блоке)
+   Индиго (по умолчанию):  --accent:#6b73e6; --accent-2:#8b5cf6;
+   Изумруд:                --accent:#2fae6d; --accent-2:#16b8a6;  --accent-soft: rgba(47,174,109,.10)
+   Роза:                   --accent:#e0679c; --accent-2:#e0578a;  --accent-soft: rgba(224,103,156,.10)
+   Янтарь:                 --accent:#e0932f; --accent-2:#e0a92f;  --accent-soft: rgba(224,147,47,.10)
+   Лазурь:                 --accent:#2f9fe0; --accent-2:#2f7fe0;  --accent-soft: rgba(47,159,224,.10)
+   ============================================================ */
