@@ -38,7 +38,16 @@ body {
   /* шрифт НЕ меняем: смена метрик даёт микро-сдвиги вёрстки */
 }
 ::selection { background-color: var(--accent); color: #fff; }
-::-webkit-scrollbar-thumb { background-color: var(--border-2); }
+/* скроллбар: и трек, и ползунок — тёмные (белая полоса справа была из-за трека) */
+::-webkit-scrollbar { background-color: var(--bg) !important; }
+::-webkit-scrollbar-track { background-color: var(--bg) !important; }
+::-webkit-scrollbar-thumb { background-color: var(--border-2) !important; border-radius: 8px; }
+html { scrollbar-color: var(--border-2) var(--bg); }
+
+/* заголовки страниц: у Шикимори h1 жёстко тёмный (#112233) */
+h1, h2, h3, header.head h1, header.head h2, header.head h1 a, header.head h2 a {
+  color: var(--text) !important;
+}
 
 /* ---------- ссылки ---------- */
 a { color: var(--link) !important; }
@@ -103,6 +112,51 @@ header.head h1 a, header.head h2 a { color: var(--link) !important; }
   border-color: var(--border-2) !important;
 }
 option { background-color: var(--surface) !important; color: var(--text) !important; }
+
+/* ---------- белые плашки: загрузчики, пагинация, вкладки отзывов ---------- */
+.b-postloader,
+.b-postloader.collapsed,
+.resources-loader,
+.comments-loader,
+.b-ajax.loading,
+.content-loader {
+  background-color: var(--surface) !important;
+  color: var(--text-2) !important;
+  border-color: var(--border) !important;
+}
+.b-postloader a, .b-postloader span,
+.link-title, .link-total, .link-page,
+.c-ms-title, .c-ms-title span {
+  color: var(--text-2) !important;
+}
+.navigation-node, a.navigation-node {
+  background-color: var(--surface-2) !important;
+  color: var(--text-2) !important;
+  border-color: var(--border) !important;
+}
+a.navigation-node.navigation-node-positive {
+  background-color: rgba(76,175,80,.14) !important;
+  color: #8fd694 !important;
+}
+a.navigation-node.navigation-node-negative {
+  background-color: rgba(244,67,54,.14) !important;
+  color: #f0938d !important;
+}
+a.navigation-node.is-active {
+  background-color: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+/* кнопки «Добавить в список» — были светло-голубые/белые */
+.b-add_to_list .trigger,
+.b-add_to_list .trigger .text,
+.b-add_to_list .trigger .icon {
+  background-color: var(--surface-2) !important;
+  color: var(--link) !important;
+  border-color: var(--border) !important;
+}
+.b-add_to_list .trigger:hover { background-color: var(--accent-soft) !important; color: var(--accent) !important; }
+.toggler, .b-shiki_switcher .toggler { background-color: var(--surface-3) !important; border-color: var(--border) !important; }
 
 /* ---------- теги / статусы ---------- */
 .b-tag, .b-tag[href] {
