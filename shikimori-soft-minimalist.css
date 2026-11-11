@@ -177,7 +177,17 @@ a.navigation-node.is-active {
 /* ---------- прочее ---------- */
 .b-rate .stars { color: var(--accent) !important; }
 .b-rate .stars.background { color: var(--border-2) !important; }
-.b-quote, .b-quote .b-quote { background-color: var(--surface-2) !important; border-left-color: var(--accent) !important; }
+.b-quote, .b-quote .b-quote, .b-quote-v2, blockquote.b-quote-v2 {
+  background-color: var(--surface-2) !important;
+  border-left-color: var(--accent) !important;
+  color: var(--text-2) !important;
+}
+.b-quote-v2 .quote-content, .b-quote-v2 > * { color: var(--text-2) !important; }
+.b-footer_vote, .b-footer_vote .yes, .b-footer_vote .no {
+  background-color: var(--surface-2) !important;
+  color: var(--text-2) !important;
+  border-color: var(--border) !important;
+}
 .b-spoiler .content .inner, .b-spoiler .content .inner-prgrph { background-color: var(--surface-2) !important; border-color: var(--border) !important; }
 .b-spoiler .content .before, .b-spoiler .content .after, .b-spoiler label { color: var(--text-3) !important; }
 .tooltip-inner { background-color: var(--surface) !important; color: var(--text) !important; border-color: var(--border) !important; }
