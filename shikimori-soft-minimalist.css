@@ -35,7 +35,7 @@ body {
   background: radial-gradient(1200px 600px at 100% -10%, rgba(139,147,247,.12), transparent 60%), var(--bg) !important;
   background-attachment: fixed !important;
   color: var(--text) !important;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  /* шрифт НЕ меняем: смена метрик даёт микро-сдвиги вёрстки */
 }
 ::selection { background-color: var(--accent); color: #fff; }
 ::-webkit-scrollbar-thumb { background-color: var(--border-2); }
@@ -129,6 +129,30 @@ option { background-color: var(--surface) !important; color: var(--text) !import
 .tooltip-inner { background-color: var(--surface) !important; color: var(--text) !important; border-color: var(--border) !important; }
 .b-hot_topics-v2 { background-color: var(--surface) !important; border-color: var(--border) !important; }
 .b-comments-notifier { background-color: var(--accent) !important; color: #fff !important; }
+
+/* ---------- читаемость: у Шикимори много жёстко заданных тёмных цветов ----------
+   (собрано по реальным вычисленным стилям страницы, не наугад) */
+.title { color: var(--text) !important; }
+.graph .x_label,
+.graph .x_label span,
+.copyright, .copyright span, .copyright a,
+.misc, span.misc, .hint, .notice, .b-topic .misc,
+.b-stats_bar .title, .b-stats_bar .label, .b-stats_bar .time {
+  color: var(--text-3) !important;
+}
+.b-stats_bar .title .value, .b-stats_bar .value {
+  color: var(--text-2) !important;
+}
+.p-profiles .profile-head .c-brief .head span {
+  color: var(--text-2) !important;
+}
+
+/* ---------- график активности: акцент вместо дефолтно-синего ---------- */
+.graph .bar.s0 { background-color: var(--accent) !important; }
+.graph .bar.s1 { background-color: rgba(139,147,247,.72) !important; }
+.graph .bar.s2 { background-color: rgba(139,147,247,.52) !important; }
+.graph .bar.s3 { background-color: rgba(139,147,247,.34) !important; }
+.graph .bar .value { color: #fff !important; }
 
 /* ---------- профиль ---------- */
 .p-profiles .profile-head {
