@@ -129,12 +129,7 @@ header.head h1 a, header.head h2 a,
 
 /* ============================ ГЛАВНЫЙ КОНТЕЙНЕР ============================ */
 .l-page {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  background: var(--bg) !important;
 }
 
 
