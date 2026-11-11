@@ -511,15 +511,12 @@ input[type=checkbox]:checked {
   border-radius: var(--radius-sm) !important;
 }
 
-/* графики/статы */
+/* графики/статы — только мягкий вид, без сдвигов */
 .c-lists-info .b-stats_bar .bar {
-  height: 9px;
   border-radius: 6px;
 }
 .p-profiles .stat_name .size {
-  background: var(--surface-2) !important;
-  color: var(--text-2) !important;
-  border-radius: var(--radius-pill) !important;
+  color: var(--text) !important;
 }
 
 /* «развернуть» и языковой переключатель */
@@ -557,6 +554,15 @@ input[type=checkbox]:checked {
   border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow-sm) !important;
+}
+/* имя профиля — ярко и читаемо (не перекрашиваем как ссылку) */
+.p-profiles .profile-head .c-brief .name,
+.p-profiles .profile-head .c-brief header .name,
+.p-profiles .profile-head .name,
+.p-profiles .profile-head h1,
+.p-profiles .profile-head .c-brief .name a {
+  color: var(--text) !important;
+  font-weight: 700;
 }
 .p-profiles .profile-content .block,
 .p-profiles .about {
