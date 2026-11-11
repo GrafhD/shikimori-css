@@ -1,19 +1,16 @@
 /* ============================================================
-   SHIKIMORI · DARK (safe color-only)
-   Тёмная тема, которая меняет ТОЛЬКО цвета + скругления/тень.
-   НЕ трогает padding / margin / border-width / width / height /
-   transform / position → вёрстка остаётся дефолтной, не «едет».
+   SHIKIMORI · DARK — soft modern (safe)
+   Только цвета / скругления / тени / градиент. НЕ трогает
+   padding / margin / border-width / width / height / transform /
+   position → вёрстка = дефолтная, «съехать» нечему.
 
-   Установка: Настройки → «Внешний вид сайта» → вставить код.
-   Или через @import с GitHub (см. конец файла).
+   Установка: Настройки → «Внешний вид сайта» → вставить ВЕСЬ код.
+   (Убери старый @import, если он там есть.)
    ============================================================ */
 
-/* Отменяет дефолтную обёртку Шикимори в @media (min-width: 1024px),
-   чтобы цвета применялись и на мобильных. */
+/* Отменяет дефолтную обёртку в @media (min-width:1024px) — для мобилки */
 @media {}
 
-
-/* ============================ ТЁМНАЯ ПАЛИТРА ============================ */
 :root {
   --bg:          #0d0e13;
   --surface:     #171922;
@@ -29,247 +26,132 @@
   --accent-soft: rgba(139,147,247,.14);
   --link:        #9aa3f8;
   --link-hover:  #c0b8ff;
-  --radius-sm:   12px;
   color-scheme: dark;
 }
-
 html { color-scheme: dark; }
 
-
-/* ============================ БАЗА ============================ */
+/* ---------- база ---------- */
 body {
-  background-color: var(--bg) !important;
+  background: radial-gradient(1200px 600px at 100% -10%, rgba(139,147,247,.12), transparent 60%), var(--bg) !important;
+  background-attachment: fixed !important;
   color: var(--text) !important;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
-
 ::selection { background-color: var(--accent); color: #fff; }
-
 ::-webkit-scrollbar-thumb { background-color: var(--border-2); }
 
-
-/* ============================ ССЫЛКИ ============================ */
+/* ---------- ссылки ---------- */
 a { color: var(--link) !important; }
 a:hover { color: var(--link-hover) !important; }
+.b-link, .b-link_button, .b-mention, .b-person .name, .b-club .name,
+.b-catalog_entry .cover .title, .b-breadcrumbs a, .b-breadcrumbs > span,
+header.head h1 a, header.head h2 a { color: var(--link) !important; }
+.b-link:hover, .b-link_button:hover, .b-mention:hover, .b-person .name:hover,
+.b-catalog_entry .cover .title:hover { color: var(--link-hover) !important; }
 
-.b-link,
-.b-link_button,
-.b-mention,
-.b-comment > .inner header .name-date a.name,
-.b-topic > .inner header .name-date a.name,
-.b-person .name,
-.b-club .name,
-.b-catalog_entry .cover .title,
-.b-breadcrumbs a,
-.b-breadcrumbs > span,
-header.head h1 a, header.head h2 a {
-  color: var(--link) !important;
-}
-.b-link:hover, .b-link_button:hover, .b-mention:hover,
-.b-person .name:hover, .b-catalog_entry .cover .title:hover {
-  color: var(--link-hover) !important;
-}
+/* ---------- контейнер и меню ---------- */
+.l-page { background-color: var(--bg) !important; }
+.l-top_menu-v2 { background-color: var(--surface) !important; border-bottom-color: var(--border) !important; }
+.l-top_menu-v2 .menu-dropdown > span, .l-top_menu-v2 .menu-icon { color: var(--text-2) !important; }
+.l-top_menu-v2 .submenu { background-color: var(--surface) !important; border-color: var(--border) !important; }
+.l-top_menu-v2 .submenu > a { color: var(--text-2) !important; }
+.l-top_menu-v2 .global-search input { background-color: var(--surface-2) !important; color: var(--text) !important; border-color: var(--border) !important; }
+.l-top_menu-v2 .menu-icon.contest:after, .l-top_menu-v2 .menu-icon.mail:after,
+.l-top_menu-v2 .menu-dropdown > span[data-unread_count]::after { background-color: var(--accent) !important; color: #fff !important; }
 
-
-/* ============================ КОНТЕЙНЕР И МЕНЮ ============================ */
-.l-page {
-  background-color: var(--bg) !important;
-}
-
-.l-top_menu-v2 {
-  background-color: var(--surface) !important;
-  border-bottom-color: var(--border) !important;
-}
-.l-top_menu-v2 .menu-dropdown > span,
-.l-top_menu-v2 .menu-icon {
-  color: var(--text-2) !important;
-}
-.l-top_menu-v2 .submenu {
-  background-color: var(--surface) !important;
-  border-color: var(--border) !important;
-}
-.l-top_menu-v2 .submenu > a {
-  color: var(--text-2) !important;
-}
-.l-top_menu-v2 .global-search input {
-  background-color: var(--surface-2) !important;
-  color: var(--text) !important;
-  border-color: var(--border) !important;
-}
-.l-top_menu-v2 .menu-icon.contest:after,
-.l-top_menu-v2 .menu-icon.mail:after,
-.l-top_menu-v2 .menu-dropdown > span[data-unread_count]::after {
-  background-color: var(--accent) !important;
-  color: #fff !important;
-}
-
-
-/* ============================ ЗАГОЛОВКИ ============================ */
+/* ---------- заголовки разделов ---------- */
 .headline, .midheadline, .subheadline {
   background-color: var(--surface-2) !important;
   color: var(--text) !important;
   border-color: var(--border) !important;
+  border-radius: 12px !important;
 }
-.headline > a, .midheadline > a, .subheadline > a {
-  color: var(--text) !important;
-}
-.headline > a:hover, .midheadline > a:hover, .subheadline > a:hover {
-  color: var(--accent) !important;
-}
+.headline > a, .midheadline > a, .subheadline > a { color: var(--text) !important; }
+.headline > a:hover, .midheadline > a:hover, .subheadline > a:hover { color: var(--accent) !important; }
 
-
-/* ============================ КАРТОЧКИ (только цвет + скругление/тень) ============================ */
-.b-topic,
-.b-comment > .inner,
-.b-message > .inner,
-.b-catalog_entry {
+/* ---------- карточки: цвет + скругление + мягкая тень ---------- */
+.b-topic, .b-comment > .inner, .b-message > .inner, .b-catalog_entry {
   background-color: var(--surface) !important;
   border-color: var(--border) !important;
 }
-.b-topic,
-.b-comment > .inner,
-.b-message > .inner,
-.b-catalog_entry,
-.headline,
-.midheadline,
-.subheadline,
-.tooltip-inner,
-.b-input input,
-.b-input textarea,
-select,
-.b-button,
-.b-link_button,
-.b-tag,
-.b-tag[href],
-.p-profiles .profile-head {
-  border-radius: var(--radius-sm) !important;
+.b-topic, .b-comment > .inner, .b-message > .inner, .b-catalog_entry,
+.tooltip-inner, .b-input input, .b-input textarea, select,
+.b-link_button, .b-tag, .b-tag[href] { border-radius: 12px !important; }
+.b-topic, .b-comment > .inner, .b-message > .inner, .b-catalog_entry {
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
 }
-.b-topic,
-.b-comment > .inner,
-.b-message > .inner,
-.b-catalog_entry,
-.p-profiles .profile-head {
-  box-shadow: 0 1px 2px rgba(0,0,0,.35) !important;
-}
+.b-catalog_entry .cover, .b-catalog_entry .cover img, .b-catalog_entry .image-decor img,
+.p-profiles .profile-head .c-history .entry img { border-radius: 12px !important; }
 
-
-/* ============================ КНОПКИ ============================ */
-.b-button,
-.b-form input[type=submit],
-.b-poll .poll-actions .vote,
-.b-poll .poll-actions .abstain {
-  background-color: var(--accent) !important;
+/* ---------- кнопки ---------- */
+.b-button, .b-form input[type=submit], .b-poll .poll-actions .vote, .b-poll .poll-actions .abstain {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
   color: #fff !important;
-  border-color: var(--accent) !important;
+  border-color: transparent !important;
+  border-radius: 999px !important;
 }
-.b-link_button {
-  background-color: var(--surface-2) !important;
-  color: var(--text-2) !important;
-  border-color: var(--border) !important;
-}
-.b-link_button.dark {
-  background-color: var(--surface-3) !important;
-  color: var(--text) !important;
-  border-color: var(--border) !important;
-}
+.b-link_button { background-color: var(--surface-2) !important; color: var(--text-2) !important; border-color: var(--border) !important; }
+.b-link_button.dark { background-color: var(--surface-3) !important; color: var(--text) !important; border-color: var(--border) !important; }
 
-
-/* ============================ ПОЛЯ / ФОРМЫ ============================ */
-.b-input input, .b-input textarea,
-.b-shiki_editor .body .editor textarea,
-.b-shiki_editor .body .preview,
-.b-collection_search .field input,
-.b-bb_codes-examples .example .textarea,
-select {
+/* ---------- поля / формы ---------- */
+.b-input input, .b-input textarea, .b-shiki_editor .body .editor textarea,
+.b-shiki_editor .body .preview, .b-collection_search .field input,
+.b-bb_codes-examples .example .textarea, select {
   background-color: var(--surface-2) !important;
   color: var(--text) !important;
   border-color: var(--border-2) !important;
 }
 option { background-color: var(--surface) !important; color: var(--text) !important; }
 
-
-/* ============================ ТЕГИ / СТАТУСЫ ============================ */
+/* ---------- теги / статусы ---------- */
 .b-tag, .b-tag[href] {
   background-color: var(--surface-2) !important;
   color: var(--text-2) !important;
   border-color: var(--border) !important;
+  border-radius: 999px !important;
 }
 .b-tag:hover, .b-tag[href]:hover, .b-tag[href].active {
   background-color: var(--accent-soft) !important;
   color: var(--accent) !important;
   border-color: var(--accent) !important;
 }
-.b-anime_status_tag.studio:hover {
-  background-color: var(--accent-soft) !important;
-  color: var(--accent) !important;
-}
-.b-status-line .section {
-  background-color: var(--surface-2) !important;
-  color: var(--text-2) !important;
-  border-color: var(--border) !important;
-}
-.b-topic .footer-vote {
-  background-color: var(--surface-2) !important;
-  border-color: var(--border) !important;
-  color: var(--text-2) !important;
-}
+.b-anime_status_tag.studio:hover { background-color: var(--accent-soft) !important; color: var(--accent) !important; }
+.b-status-line .section { background-color: var(--surface-2) !important; color: var(--text-2) !important; border-color: var(--border) !important; }
+.b-topic .footer-vote { background-color: var(--surface-2) !important; border-color: var(--border) !important; color: var(--text-2) !important; }
 
-
-/* ============================ РАЗНОЕ ============================ */
+/* ---------- прочее ---------- */
 .b-rate .stars { color: var(--accent) !important; }
 .b-rate .stars.background { color: var(--border-2) !important; }
+.b-quote, .b-quote .b-quote { background-color: var(--surface-2) !important; border-left-color: var(--accent) !important; }
+.b-spoiler .content .inner, .b-spoiler .content .inner-prgrph { background-color: var(--surface-2) !important; border-color: var(--border) !important; }
+.b-spoiler .content .before, .b-spoiler .content .after, .b-spoiler label { color: var(--text-3) !important; }
+.tooltip-inner { background-color: var(--surface) !important; color: var(--text) !important; border-color: var(--border) !important; }
+.b-hot_topics-v2 { background-color: var(--surface) !important; border-color: var(--border) !important; }
+.b-comments-notifier { background-color: var(--accent) !important; color: #fff !important; }
 
-.b-quote, .b-quote .b-quote {
-  background-color: var(--surface-2) !important;
-  border-left-color: var(--accent) !important;
-}
-
-.b-spoiler .content .inner, .b-spoiler .content .inner-prgrph {
-  background-color: var(--surface-2) !important;
-  border-color: var(--border) !important;
-}
-.b-spoiler .content .before, .b-spoiler .content .after,
-.b-spoiler label { color: var(--text-3) !important; }
-
-.tooltip-inner {
-  background-color: var(--surface) !important;
-  color: var(--text) !important;
-  border-color: var(--border) !important;
-}
-
-.b-hot_topics-v2 {
-  background-color: var(--surface) !important;
-  border-color: var(--border) !important;
-}
-
-.b-comments-notifier {
-  background-color: var(--accent) !important;
-  color: #fff !important;
-}
-
-
-/* ============================ ПРОФИЛЬ ============================ */
+/* ---------- профиль ---------- */
 .p-profiles .profile-head {
-  background-color: var(--surface) !important;
+  background: linear-gradient(135deg, rgba(139,147,247,.12), transparent 55%), var(--surface) !important;
   border-color: var(--border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.35), 0 12px 30px rgba(0,0,0,.25) !important;
 }
-/* имя профиля — яркое (это <h1>, а не ссылка) */
+/* имя профиля — это <h1>, делаем ярким */
 .p-profiles .profile-head .c-brief .head h1,
-.p-profiles .profile-head h1 {
-  color: var(--text) !important;
+.p-profiles .profile-head h1 { color: var(--text) !important; }
+
+/* круглые аватарки с мягкой тенью */
+.b-user.avatar img, .p-profiles .profile-head .c-brief .avatar img,
+.b-user.named_avatar img, .b-club .logo,
+.b-comment > .inner header img, .l-top_menu-v2 .menu-dropdown.profile > span img {
+  border-radius: 50% !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.4) !important;
 }
 
-/* статы: только перекраска, высоту НЕ трогаем */
-.b-stats_bar .bar .first { background-color: var(--accent) !important; }
-.b-stats_bar .bar .second,
-.b-stats_bar .bar .third { background-color: var(--surface-3) !important; }
-.b-stats_bar .bar .first,
-.b-stats_bar .bar .second,
-.b-stats_bar .bar .third { color: #fff !important; }
+/* статы: цвет + градиент, высоту НЕ трогаем */
+.c-lists-info .b-stats_bar .bar { border-radius: 8px !important; }
+.b-stats_bar .bar .first { background: linear-gradient(90deg, #7c84f0, var(--accent-2)) !important; }
+.b-stats_bar .bar .second, .b-stats_bar .bar .third { background-color: var(--surface-3) !important; }
+.b-stats_bar .bar .first, .b-stats_bar .bar .second, .b-stats_bar .bar .third { color: #fff !important; }
 .b-stats_bar .stat_names .stat_name .size { color: var(--text-2) !important; }
-
-
-/* ============================================================
-   Установка через GitHub (автообновление):
-   @import url("https://raw.githubusercontent.com/GrafhD/shikimori-css/main/shikimori-soft-minimalist.css");
-   После правок в файле сбрось кеш: https://shikimori.io/tests/reset_styles_cache
-   ============================================================ */
